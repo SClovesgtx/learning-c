@@ -94,3 +94,27 @@ int i=10;
 - **static**: extends the local variable scope throughout the program.
 - **register**: stores  in processor register and provides fast access.
 - **extern**: extend the visibility across different files.  
+
+# Pointers
+
+You can reserve a memory address for a variable using a pointer. Syntax example:
+
+```c
+int *a; 
+```
+
+## Application of pointers
+
+The main application for pointers is embedded systems/device, where exist a concern about low memory use.
+
+For example, image a device that control temperature:
+
+![](imgs/temperature_sensor.png)
+
+There is a sensor attached to a memory address (1024) that will storage a temperature value. 
+
+A program will access (point to 1024) this particular memory address to make decisions.
+
+Pointers also help with memory efficiency allocation. For example, when we need to pass some data to a function, instead to pass a data that will consume new memory space inside the function, we can just pass to the function a pointer to the memory address where data is storage, in this way, the function will be able to work with the data without use memory space unnecessarily.
+
+Please, see the code in *pointer_intro.c* and compile it to see his output.
