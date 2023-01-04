@@ -118,3 +118,20 @@ A program will access (point to 1024) this particular memory address to make dec
 Pointers also help with memory efficiency allocation. For example, when we need to pass some data to a function, instead to pass a data that will consume new memory space inside the function, we can just pass to the function a pointer to the memory address where data is storage, in this way, the function will be able to work with the data without use memory space unnecessarily.
 
 Please, see the code in *pointer_intro.c* and compile it to see his output.
+
+## Memory Allocation (malloc)
+
+You can allocate memory in two storage classes:
+
+- **Static**: will use the stack memory section of the RAM.
+- **Dynamic**: will use the heap memory section of the RAM.
+
+The *c* functions to allocate memory are: ```malloc and calloc```.
+
+These function are in ```stdlib.h``` library.
+
+![malloc](imgs/malloc.png)
+
+If the memory required is not available in the heap, *malloc* will return *NULL*.
+
+
