@@ -119,7 +119,7 @@ Pointers also help with memory efficiency allocation. For example, when we need 
 
 Please, see the code in *pointer_intro.c* and compile it to see his output.
 
-## Memory Allocation (malloc)
+## Memory Allocation (malloc, calloc and realloc)
 
 You can allocate memory in two storage classes:
 
@@ -130,8 +130,41 @@ The *c* functions to allocate memory are: ```malloc and calloc```.
 
 These function are in ```stdlib.h``` library.
 
+## malloc
+
+The *malloc()* allocates a memory block of given size (in bytes) and returns a pointer to the beginning of the block. The *malloc()* doesn’t initialize the allocated memory. If you try to read from the allocated memory without first initializing it, then you will invoke undefined behavior, which will usually mean the values you read will be garbage.
+
 ![malloc](imgs/malloc.png)
 
 If the memory required is not available in the heap, *malloc* will return *NULL*.
+
+## calloc
+
+The *calloc()* allocates the memory and also initializes every byte in the allocated memory to 0. If you try to read the value of the allocated memory without initializing it, you’ll get 0 as it has already been initialized to 0 by *calloc()*.
+
+![](imgs/calloc.png)
+
+## realloc
+
+If the memory allocated was not enough, you can reallocate more using *realloc*. If the memory area is not created dynamically using *malloc* and *calloc*, then the behavior of the *realloc* function is *unmodified*.
+
+![realloc](https://media.giphy.com/media/ScR2ZAJyQltMZFy8bx/giphy.gif)
+
+It's also possible to *realloc* memory to be less then the original allocation.
+
+## Memory leak and free() function
+
+If we allocate more memory them is available, the system will crash, this is called *memory leak*:
+
+
+![](imgs/memory_leak.png)
+
+What can we do?
+
+If a the heap memory is full (memory leak) we know that the *malloc*, *calloc* and *realloc* will return *NULL*.
+If the case, you can *clean* a section of memory using *free()* function passing the pointer as argument:
+
+![free func](https://media.giphy.com/media/MC3kCsJY1plSZLUaiA/giphy.gif)
+
 
 
