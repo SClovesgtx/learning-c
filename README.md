@@ -166,5 +166,33 @@ If the case, you can *clean* a section of memory using *free()* function passing
 
 ![free func](https://media.giphy.com/media/MC3kCsJY1plSZLUaiA/giphy.gif)
 
+# Structure Padding and Packing
 
+![padding](imgs/padding.png)
+
+How you can see in the image above, the char *c1* occupies 1 byte of memory, but 4 bytes is reserved for it, it lefts 3 bytes off. The integer *i* occupies 4 bytes, so it can't use the 3 bytes left by the *c1* char. So, the system adds a 3 bytes padding after *c1* to reserve 4 bytes for the integer *i*.
+
+In this way, 12 bytes of memory was needed for the Structure *example*.
+
+But if we reorganize the order of the variable to "char, char, int" we'll have another allocation memory result. Ex:
+
+![padding](imgs/padding_2.png)
+
+To avoid the structure padding behavior, we can packed it.  
+
+
+![](https://media.giphy.com/media/mlUGWD2YjuG9vmXbA7/giphy.gif)
+
+
+The padding helps **increases system performance**. Why? A system of 32 bytes could read 32 bytes at time (the 4 blocks of memory in images above), so it is fast to it reserve 32 bytes for each variable, so the processor could jump every 32 bytes and just read the value of each variable:
+
+![](https://media.giphy.com/media/8oZaNeIUFQVCsBs2JU/giphy.gif)
+
+when we packed the structure, the values of each variable overlaps the "windows" of 32 bytes and the processor needs more work to deal with overlapping and finally reads the values of each variable:
+
+![](https://media.giphy.com/media/b0QpC0BXqKD7zFtQ4l/giphy.gif)
+
+This will reduce the system performance, but we has **memory efficiency**.
+
+Please, check the *structure.c* file.
 
