@@ -10,11 +10,6 @@ int main(){
         float price;
     };
 
-    struct car car1 = {"ford", 50000};
-
-    printf("Car name: %s\n", car1.name);
-    printf("Car price: %f\n", car1.price);
-
     // struture with packing
     struct address
     {
@@ -24,12 +19,26 @@ int main(){
         char zip_code[12];
     }__attribute__((packed));
 
+    // nested structures
+    struct account
+    {
+        struct car user_car;
+        struct address user_address;
+    };
+    
+    struct car car1 = {"ford", 50000};
+
     struct address user_address = {"Wall Street", 29, "80250-500"};
 
+    struct account c = {car1, user_address};
+
+    printf("Car name: %s\n", c.user_car.name);
+    printf("Car price: %f\n", c.user_car.price);
+
     printf("The user address is:\n");
-    printf("Street: %s\n", user_address.street);
-    printf("House number: %d\n", user_address.house_number);
-    printf("Zip code: %s\n", user_address.zip_code);
+    printf("Street: %s\n", c.user_address.street);
+    printf("House number: %d\n", c.user_address.house_number);
+    printf("Zip code: %s\n", c.user_address.zip_code);
     
     
 }
