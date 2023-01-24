@@ -196,3 +196,61 @@ This will reduce the system performance, but we has **memory efficiency**.
 
 Please, check the *structure.c* file.
 
+# Union
+
+It is a structure data type that all the member share the same memory location.
+
+![](imgs/union.png)
+
+It's very important for [imperative programming](https://en.wikipedia.org/wiki/Imperative_programming) where the major concern is memory efficiency.
+
+The size of a union is the size of large member. Ex:
+
+```c
+union example {
+  int i;
+  char c;
+  double d;
+}
+```
+
+Double is the large member, it uses 8 bytes of memory, so the union datatype will have 8 bytes.
+
+Given that all the members share the same memory location, just one member at time could occupies it.
+
+The application of union is when you have a function and you do not know which variable type will come. If you expect it could be a integer, or a float, or a double, so you define a union that has these three cases.
+
+# Bit field
+
+This C feature is also used when memory efficiency is a major concern.
+
+Suppose you need to store information about day, month and year in a data structure. So you define:
+
+```C
+struct date {
+  unsigned int day;
+  unsigned int month;
+  unsigned int year;
+}
+```
+
+So the *date* you reserve 4 bytes for each field, in total 12 bytes, that is 96 bits at total.
+
+But we can save bits thinking as the following:
+
+![](imgs/bit_field.png)
+
+The maximum number that can been storage in day is 31, the number 31 uses 5 bits (11111 in binary), and so on.
+
+In that way you use 32 bits, we'll save 64 bits.
+
+To define the bit field:
+
+```C
+struct date {
+  unsigned int day: 5;
+  unsigned int month: 4;
+  unsigned int year: 23;
+}
+```
+
