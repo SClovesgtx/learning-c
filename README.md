@@ -1,3 +1,22 @@
+# Compiler, assembler, linker, loader
+
+All steps from c source code to execution: 
+
+![](imgs/compiler.png)
+
+# Type Conversion
+
+The following image shows the hierarchy of size of the data types. In the base are the data types with small size and the top are the data types with larger size. 
+
+![](imgs/types.png)
+
+There are two types of type conversion:
+
+- **implicit**: the compiler deduce the conversion when variables with different types are part of a operation looking for the larger data type and converting the other data types to the type of the larger one.
+- **explicit**: by defining the type at the beginning.
+
+Please check the *type_conversion.c* file.
+
 # Storage classes
 
 The objective of the storage classes is to define the scope and lifetime of the variables.
